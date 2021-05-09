@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="register">
+        <div class="register__top">
+            @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
+            {
+            <div class="register__top--create">
+                Sign Up
+            </div>
+            }
+            else
+            {
+            <div class="register__top--create">
+                Create your account
+            </div>
+            }
+            
+            <div class="register__top--registration">
+                Registration is easy.
+            </div>
+        </div>
+        <form autocomplete="off" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div class="register__username">
+                <div class="register__username--email">
+                    <div class="register__username--label required">Email address</div>
+                    <input asp-for="Input.Email" class="register__username--input" type="email">
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="register__username--name">
+                    <div class="register__username--label required">Name</div>
+                    <input asp-for="Input.Name" class="register__username--input" type="text">
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+                <div class="register__username--phone">
+                    <div class="register__username--label">Phone</div>
+                    <input asp-for="Input.PhoneNumber" class="register__username--input" type="text">
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="register__username--street">
+                    <div class="register__username--label">Street Address</div>
+                    <input asp-for="Input.StreetAddress" class="register__username--input" type="text">
+                    <span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
+                </div>
+                <div class="register__username--city">
+                    <div class="register__username--label">City</div>
+                    <input asp-for="Input.City" class="register__username--input" type="text">
+                    <span asp-validation-for="Input.City" class="text-danger"></span>
+                </div>
+                <div class="register__username--state-postal-code">
+                    <div class="register__username--state">
+                        <div class="register__username--label">State</div>
+                        <input asp-for="Input.State" class="register__username--input" type="text">
+                        <span asp-validation-for="Input.State" class="text-danger"></span>
+                    </div>
+                    <div class="register__username--postal-code">
+                        <div class="register__username--label">Postal Code</div>
+                        <input asp-for="Input.PostalCode" class="register__username--input" type="text">
+                        <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="register__username--password">
+                    <div class="register__username--label required">Password</div>
+                    <input asp-for="Input.Password" class="register__username--input" type="password">
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="register__username--confirm-password">
+                    <div class="register__username--label required">Confirm Password</div>
+                    <input asp-for="Input.ConfirmPassword" class="register__username--input" type="password">
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="register__username--Role">
+                    <label asp-for="Input.Role"></label>
+                    @Html.DropDownListFor(m => m.Input.Role, Model.Input.RoleList,
+                    "-Please select a role", new { @class = "form-control" })
+                </div>
+                <div class="register__username--company">
+                    <label asp-for="Input.CompanyId"></label>
+                    @Html.DropDownListFor(m => m.Input.CompanyId, Model.Input.CompanyList,
+                    "-Please select a company", new { @class = "form-control" })
+                </div>
+            </div>
+            <button type="submit" class="register__btn">
+                Register
+            </button>
+        </form>
+        <div class="register__line">
+            <div class="register__line--text">
+                <!-- OR -->
+            </div>
+        </div>
+        @if (!User.IsInRole(SD.Role_Admin) && !User.IsInRole(SD.Role_Employee))
+        {
+        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div class="register-btn__social">
+                @foreach (var provider in Model.ExternalLogins)
+                {
+                @if (provider.Name.ToLower().Contains("google"))
+                {
+                <button type="submit" class="register__btn register-btn__social" name="provider" value="@provider.Name">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+                }
+                }
+                @foreach (var provider in Model.ExternalLogins)
+                {
+                @if (provider.Name.ToLower().Contains("facebook"))
+                {
+                <button type="submit" class="register__btn register-btn__social" name="provider" value="@provider.Name">
+                    <i class="fab fa-facebook-square"></i>
+                    Continue with Facebook
+                </button>
+                }
+                }
+            </div>
+        </form>
+        }
+    </div>
+
+
+</body>
+
+</html>
