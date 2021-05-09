@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Cairo:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+    <div class="shopping-cart">
+        <div class="shopping-cart__header">
+            <div class="shopping-cart-header__number">
+                2 items in your cart
+            </div>
+            <a class="shopping-cart-header__keep-shopping">
+                Keep shopping
+            </a>
+        </div>
+        <div class="shopping-cart__main">
+            <div class="shopping-cart__item">
+                <!-- <div style="height: 1rem"></div> -->
+                <div class="shopping-cart__list-product">
+                    <div class="shopping-cart__product">
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__img">
+                                <img src="img/home1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__title">
+                                Abstract Art Print. Framed or Unframed. 180413.
+                            </div>
+                            <div class="shopping-cart-product__desc">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit...
+                            </div>
+                            <div class="shopping-cart-product__remove">
+                                <a asp-action="remove" asp-route-cartId="@item.Id" class="btn btn-outline-danger">
+                                    <span>Remove</span>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__number">
+                                15000x2
+                            </div>
+                        </div>
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__icons">
+                                <div class="shopping-cart-product-icon__plus-and-minus">
+                                    <div class="shopping-cart-product-icon__plus">
+                                        <a href="" asp-action="plus" asp-route-cartId="@item.Id"
+                                            class="btn btn-primary">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="shopping-cart-product-icon__minus">
+                                        <a asp-action="minus" asp-route-cartId="@item.Id" class="btn btn-danger">
+                                            <i class="fas fa-minus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- <div class="shopping-cart-product-icon__remove">
+                                    <a asp-action="remove" asp-route-cartId="@item.Id" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__btn">
+                                <b>US$48.00</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shopping-cart__product">
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__img">
+                                <img src="img/facemask2.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__title">
+                                Abstract Art Print. Framed or Unframed. 180413.
+                            </div>
+                            <div class="shopping-cart-product__desc">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit...
+                            </div>
+                            <div class="shopping-cart-product__remove">
+                                <a asp-action="remove" asp-route-cartId="@item.Id" class="btn btn-outline-danger">
+                                    <span>Remove</span>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__number">
+                                15000x2
+                            </div>
+                        </div>
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__icons">
+                                <div class="shopping-cart-product-icon__plus-and-minus">
+                                    <div class="shopping-cart-product-icon__plus">
+                                        <a href="" asp-action="plus" asp-route-cartId="@item.Id"
+                                            class="btn btn-primary">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="shopping-cart-product-icon__minus">
+                                        <a asp-action="minus" asp-route-cartId="@item.Id" class="btn btn-danger">
+                                            <i class="fas fa-minus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- <div class="shopping-cart-product-icon__remove">
+                                                        <a asp-action="remove" asp-route-cartId="@item.Id" class="btn btn-outline-danger">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </div> -->
+                            </div>
+                        </div>
+                        <div class="shopping-cart-product__item">
+                            <div class="shopping-cart-product__btn">
+                                <b>US$48.00</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shopping-cart__item">
+                <div class="shopping-cart__checkout">
+                    <div class="shopping-cart-checkout__header">
+                        How you'll pay
+                    </div>
+                    <div class="shopping-cart-checkout__list-icon">
+                        <img class="shopping-cart-checkout__master-card" src="img/mastercard-icon.svg" alt="">
+                        <img class="shopping-cart-checkout__visa" src="img/visa-icon.svg" alt="">
+                    </div>
+                    <div class="shopping-cart-checkout__total">
+                        <div class="shopping-cart-checkout__total-items">
+                            Total (2 items)
+                        </div>
+                        <div class="shopping-cart-checkout__total-price">
+                            US$217.65
+                        </div>
+                    </div>
+                    <div class="btn-add-to-checkout">
+                        <a class="btn-add-to-checkout__text">
+                            Proceed to checkout
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
